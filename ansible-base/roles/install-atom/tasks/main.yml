@@ -1,0 +1,22 @@
+---
+  - name: Check if Atom is already installed
+    command: dpkg-query -s atom
+    register: atom_installed_check
+    failed_when: atom_installed_check.rc > 1
+    changed_when: atom_installed_check.rc == 1
+
+  - name: Download the Atom deb package
+    get_url:
+      url: "{{ atom_download_url }}"
+      dest: "{{ download_dir }}/{{ atom_package_name }}"
+    when: atom_installed_check.rc == 1
+
+  - name: Install Atom
+    apt:
+      deb: "{{ download_dir }}/{{ atom_package_name }}"
+    register: atom_install_result
+    ignore_errors: true
+    when: atom_installed_check.rc == 1
+
+  - include: update-and-retry.yml
+    when: atom_install_result is defined and atom_install_result.stderr != ""

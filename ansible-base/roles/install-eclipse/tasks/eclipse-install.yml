@@ -1,0 +1,29 @@
+---
+  - name: Download Eclipse (Neon 2)
+    get_url:
+      url: "{{ eclipse_download_url }}"
+      dest: "{{ download_dir }}/{{ eclipse_package_name }}"
+
+  - name: Decompress Eclipse tarball
+    unarchive:
+      src: "{{ download_dir }}/{{ eclipse_package_name }}"
+      dest: "{{ eclipse_unarchive_dest }}"
+      remote_src: true
+
+  - name: Template the desktop file
+    template: src=eclipse.desktop.j2 dest=/usr/share/applications/eclipse.desktop
+
+  - name: Install the desktop file
+    shell: desktop-file-install /usr/share/applications/eclipse.desktop
+
+  - name: Create symlink for Eclipse binary
+    file: src="{{ eclipse_unarchive_dest }}/eclipse/eclipse" dest=/usr/local/bin/eclipse state=link
+
+  - name: Create the workspace directory
+    file: path={{ eclipse_workspace_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
+
+  - name: Create the code formatters directory
+    file: path={{ eclipse_formatters_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
+
+  - name: Copy the custom Java conventions formatter
+    copy: src=java_custom_format.xml dest={{ eclipse_formatters_dir }}/java_custom_format.xml owner={{ username }} group={{ username }}

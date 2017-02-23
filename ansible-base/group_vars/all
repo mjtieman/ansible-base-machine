@@ -1,0 +1,4 @@
+# username is expected to be passed in via extra-vars
+
+user_home: /home/{{ username }}
+download_dir: /home/{{ username }}/ansible-downloads

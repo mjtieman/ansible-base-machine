@@ -1,0 +1,8 @@
+---
+  - name: Check if Eclipse is installed
+    shell: which eclipse
+    register: eclipse_install_check
+    ignore_errors: true
+
+  - include: eclipse-install.yml
+    when: eclipse_install_check.rc != 0

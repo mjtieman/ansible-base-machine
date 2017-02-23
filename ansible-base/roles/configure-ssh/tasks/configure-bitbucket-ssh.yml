@@ -1,0 +1,27 @@
+---
+  # Bitbucket no longer supports pushing SSH keys via the API: https://bitbucket.org/site/master/issues/11565/cant-add-ssh-key-to-the-account-when-using
+  # These tasks will only create the key pair and add an entry to the ssh config
+  # The public key will need to be manually added through the Bitbucket UI
+
+  - include_vars: bitbucket.yml
+
+  - name: Create a directory for the key pair
+    file: path={{ bitbucket_keys_dir }}/ owner={{ username }} group={{ username }} state=directory recurse=yes
+
+  - name: Generate a new RSA key pair
+    user:
+      name: "{{ username }}"
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: "{{ bitbucket_keys_dir }}/id_rsa"
+
+  - name: Add an entry in the ssh config
+    blockinfile:
+      dest: "{{ ssh_config_file }}"
+      marker: ""
+      block: |
+        # bitbucket
+        Host bitbucket.com
+          HostName bitbucket.com
+          IdentityFile {{ bitbucket_keys_dir }}/id_rsa
+          User {{ bitbucket_username }}

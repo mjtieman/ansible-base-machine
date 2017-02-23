@@ -1,0 +1,6 @@
+---
+eclipse_download_url: http://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/neon/2/eclipse-java-neon-2-linux-gtk-x86_64.tar.gz
+eclipse_package_name: eclipse-neon-2.tar.gz
+eclipse_unarchive_dest: /opt
+eclipse_workspace_dir: "{{ user_home }}/eclipse/workspaces"
+eclipse_formatters_dir: "{{ user_home }}/eclipse/formatters"

@@ -1,0 +1,27 @@
+---
+  - hosts: all
+    sudo: true
+    pre_tasks:
+      - name: Create a temporary directory for downloads
+        file: path={{ download_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
+
+      - name: Install apt packages
+        apt: name={{ item }}
+        with_items:
+          - virtualenv
+          - awscli
+
+      - name: Install Python modules
+        pip: name={{ item }}
+        with_items:
+          - boto
+
+    roles:
+      - install-atom
+      - install-java
+      - install-chrome
+      - install-git
+      - install-maven
+      - install-eclipse
+      - configure-vim
+      - configure-ssh

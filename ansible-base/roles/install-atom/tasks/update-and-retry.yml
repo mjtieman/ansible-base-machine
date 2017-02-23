@@ -1,0 +1,8 @@
+---
+  - name: Try installing missing dependencies if install failed
+    shell: apt-get -f install -y
+    sudo: true
+
+  - name: Retry the install after fixing any broken dependencies
+    apt:
+      deb: "{{ download_dir }}/{{ atom_package_name }}"

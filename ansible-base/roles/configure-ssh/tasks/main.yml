@@ -1,0 +1,22 @@
+---
+  - name: Create the ssh directory
+    file: path={{ user_ssh_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
+
+  - name: Create the ssh config file
+    file: path={{ ssh_config_file }} owner={{ username }} group={{ username }} state=touch
+
+  - name: Check if there is an entry for Github in the ssh config
+    shell: "grep github {{ ssh_config_file }}"
+    register: check_github_ssh
+    ignore_errors: true
+
+  - name: Check if there is an entry for Bitbucket in the ssh config
+    shell: "grep bitbucket {{ ssh_config_file }}"
+    register: check_bitbucket_ssh
+    ignore_errors: true
+
+  - include: configure-github-ssh.yml
+    when: check_github_ssh.rc != 0
+
+  - include: configure-bitbucket-ssh.yml
+    when: check_bitbucket_ssh.rc != 0

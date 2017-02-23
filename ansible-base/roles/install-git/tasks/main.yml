@@ -1,0 +1,8 @@
+---
+  - name: Install git
+    apt:
+      name: git
+      state: present
+
+  - name: Copy the git configuration
+    copy: src=.gitconfig dest={{ user_home }}/.gitconfig

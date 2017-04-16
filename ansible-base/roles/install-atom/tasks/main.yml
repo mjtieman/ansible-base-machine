@@ -20,3 +20,6 @@
 
   - include: update-and-retry.yml
     when: atom_install_result is defined and atom_install_result.stderr != ""
+
+  - name: Install atom-beautify package
+    command: apm install atom-beautify

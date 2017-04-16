@@ -1,0 +1,28 @@
+---
+  - name: Add the R repository
+    lineinfile:
+      dest: /etc/apt/sources.list
+      line: "{{ r_repository_source }}"
+
+  - name: Add R to the keyring
+    command: gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+
+  - name: Export R repository key
+    command: gpg -a --export E084DAB9
+    register: repository_public_key
+
+  - name: Write the R repository public key to file
+    copy: content="{{ repository_public_key.stdout }}" dest="{{ download_dir }}/{{ r_repository_public_key_name }}"
+
+  - name: Add R repository key to apt
+    command: apt-key add "{{ download_dir }}/{{ r_repository_public_key_name }}"
+
+  - name: Update the apt cache
+    apt: update_cache=yes
+
+  - name: Install R base
+    apt: name={{ item }}
+    with_items:
+      - r-base
+      - r-base-dev
+      - gdebi-core # Needed for R-Studio install

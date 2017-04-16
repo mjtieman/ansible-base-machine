@@ -13,6 +13,13 @@ Automation to install software and make configuration tweaks I used to manually.
 * Git
 * Maven
 * Eclipse (Neon 2)
+* Ruby
+* R
+* R-Studio
+* Docker
+* Docker Compose
+* Zoom
+* Atom package `atom-beautify`
 
 ## Configuration Changes
 * Custom vim configuration

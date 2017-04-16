@@ -28,6 +28,7 @@
       #- install-maven
       #- install-eclipse
       #- install-r
-      - install-docker
+      #- install-docker
+      - install-zoom
       #- configure-vim
       #- configure-ssh

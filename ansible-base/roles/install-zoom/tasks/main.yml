@@ -1,0 +1,8 @@
+---
+  - name: Check if Zoom is installed
+    shell: which zoom
+    register: zoom_install_check
+    ignore_errors: true
+
+  - include: zoom-install.yml
+    when: zoom_install_check.rc != 0

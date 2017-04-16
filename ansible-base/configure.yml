@@ -21,14 +21,14 @@
         file: path={{ repositories_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
 
     roles:
-      #- install-atom
-      #- install-java
-      #- install-chrome
-      #- install-git
-      #- install-maven
-      #- install-eclipse
-      #- install-r
-      #- install-docker
+      - install-atom
+      - install-java
+      - install-chrome
+      - install-git
+      - install-maven
+      - install-eclipse
+      - install-r
+      - install-docker
       - install-zoom
-      #- configure-vim
-      #- configure-ssh
+      - configure-vim
+      - configure-ssh

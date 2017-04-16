@@ -21,5 +21,10 @@
   - include: update-and-retry.yml
     when: atom_install_result is defined and atom_install_result.stderr != ""
 
+  - name: List the installed Atom packages
+    command: apm list
+    register: atom_packages
+
   - name: Install atom-beautify package
     command: apm install atom-beautify
+    when: atom_packages.stdout | search("atom-beautify") == False

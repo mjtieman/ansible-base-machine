@@ -1,0 +1,16 @@
+---
+  - name: Check if R is installed
+    shell: R --version
+    register: r_install_check
+    ignore_errors: true
+
+  - include: r-install.yml
+    when: r_install_check.rc != 0
+
+  - name: Check if R-Studio is installed
+    shell: which rstudio
+    register: r_studio_install_check
+    ignore_errors: true
+
+  - include: r-studio-install.yml
+    when: r_studio_install_check.rc != 0

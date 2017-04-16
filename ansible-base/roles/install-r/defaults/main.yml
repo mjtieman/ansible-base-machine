@@ -1,0 +1,5 @@
+---
+r_repository_source: deb http://cran.rstudio.com/bin/linux/ubuntu xenial/
+r_studio_download_url: https://download1.rstudio.org/rstudio-1.0.136-amd64.deb
+r_studio_download_name: rstudio-1.0.136-amd64.deb
+r_repository_public_key_name: r_repo_public_key

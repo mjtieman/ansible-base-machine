@@ -1,0 +1,8 @@
+---
+  - name: Check if Docker is installed
+    shell: which docker
+    register: docker_install_check
+    ignore_errors: true
+
+  - include: docker-install.yml
+    when: docker_install_check.rc != 0

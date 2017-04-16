@@ -10,11 +10,15 @@
         with_items:
           - virtualenv
           - awscli
+          - ruby-full
 
       - name: Install Python modules
         pip: name={{ item }}
         with_items:
           - boto
+
+      - name: Create a repositories directory
+        file: path={{ repositories_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
 
     roles:
       - install-atom
@@ -23,5 +27,8 @@
       - install-git
       - install-maven
       - install-eclipse
+      - install-r
+      - install-docker
+      - install-zoom
       - configure-vim
       - configure-ssh

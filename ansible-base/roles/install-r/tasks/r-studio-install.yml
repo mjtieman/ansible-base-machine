@@ -1,0 +1,11 @@
+---
+  - name: Install gdebi
+    apt: name=gdebi
+
+  - name: Download R-Studio
+    get_url:
+      url: "{{ r_studio_download_url }}"
+      dest: "{{ download_dir }}/{{ r_studio_download_name }}"
+
+  - name: Install R-Studio
+    command: gdebi -n "{{ download_dir }}/{{ r_studio_download_name }}"

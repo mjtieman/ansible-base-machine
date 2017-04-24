@@ -29,6 +29,7 @@
       - install-eclipse
       - install-r
       - install-docker
+      - install-shutter
       - install-zoom
       - configure-vim
       - configure-ssh

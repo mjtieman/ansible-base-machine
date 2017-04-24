@@ -1,0 +1,8 @@
+---
+  - name: Check if Shutter is installed
+    shell: which shutter
+    register: shutter_install_check
+    ignore_errors: true
+
+  - include: shutter-install.yml
+    when: shutter_install_check.rc != 0

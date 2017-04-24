@@ -20,6 +20,7 @@ Automation to install software and make configuration tweaks I used to manually.
 * Docker Compose
 * Zoom
 * Atom package `atom-beautify`
+* Shutter
 
 ## Configuration Changes
 * Custom vim configuration

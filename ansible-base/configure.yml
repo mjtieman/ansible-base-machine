@@ -16,6 +16,8 @@
         pip: name={{ item }}
         with_items:
           - boto
+          - tox
+          - virtualenv
 
       - name: Create a repositories directory
         file: path={{ repositories_dir }} owner={{ username }} group={{ username }} state=directory recurse=yes
@@ -31,5 +33,10 @@
       - install-docker
       - install-shutter
       - install-zoom
+      - install-packer
       - configure-vim
       - configure-ssh
+
+    post_tasks:
+      - name: Delete the temporary downloads directory
+        file: path={{ download_dir }} state=absent

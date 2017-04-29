@@ -21,6 +21,9 @@ Automation to install software and make configuration tweaks I used to manually.
 * Zoom
 * Atom package `atom-beautify`
 * Shutter
+* tox
+* virtualenv
+* Packer
 
 ## Configuration Changes
 * Custom vim configuration

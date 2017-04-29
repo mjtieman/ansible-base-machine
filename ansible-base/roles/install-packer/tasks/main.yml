@@ -1,0 +1,8 @@
+---
+  - name: Check if Packer is installed
+    shell: which packer
+    register: packer_install_check
+    ignore_errors: true
+
+  - include: packer-install.yml
+    when: packer_install_check.rc != 0

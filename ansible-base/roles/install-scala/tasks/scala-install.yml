@@ -1,0 +1,9 @@
+---
+  - name: Download Scala
+    get_url:
+      url: "{{ scala_download_url }}"
+      dest: "{{ download_dir }}/{{ scala_package_name }}"
+
+  - name: Install Scala
+    shell: "dpkg -i {{ download_dir }}/{{ scala_package_name }}"
+    sudo: true

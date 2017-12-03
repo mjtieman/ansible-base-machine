@@ -1,0 +1,8 @@
+---
+  - name: Check if SBT is installed
+    shell: which sbt
+    register: sbt_install_check
+    ignore_errors: true
+
+  - include: sbt-install.yml
+    when: sbt_install_check.rc != 0

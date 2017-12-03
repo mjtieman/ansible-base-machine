@@ -1,5 +1,5 @@
 # Base Machine Configuration
-Automation to install software and make configuration tweaks I used to manually. This has only been tested with Ubuntu 16.04. Once all configurations and installations have been added I will work to make this more portable.
+Automation to install software and make configuration tweaks I used to do manually. This has only been tested with Ubuntu 16.04. Once all configurations and installations have been added I will work to make this more portable.
 
 ## Installed Software
 * pip
@@ -9,6 +9,8 @@ Automation to install software and make configuration tweaks I used to manually.
 * boto
 * Atom
 * Java 8
+* Scala (2.12.1)
+* SBT (latest)
 * Chrome
 * Git
 * Maven

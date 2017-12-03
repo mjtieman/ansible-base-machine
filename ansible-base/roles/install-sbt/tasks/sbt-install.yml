@@ -1,0 +1,9 @@
+---
+  - name: Copy the SBT apt sources file
+    copy: src=sbt.list dest=/etc/apt/sources.list.d/sbt.list owner={{ username }} group={{ username }} mode=0755
+
+  - name: Add gpg key for sks key servers
+    apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=2EE0EA64E40A89B84B2DF73499E82A75642AC823
+
+  - name: Install SBT
+    apt: name=sbt update_cache=yes

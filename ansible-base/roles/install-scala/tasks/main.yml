@@ -1,0 +1,8 @@
+---
+  - name: Check if Scala is installed
+    shell: which scala
+    register: scala_install_check
+    ignore_errors: true
+
+  - include: scala-install.yml
+    when: scala_install_check.rc != 0

@@ -25,6 +25,7 @@
     roles:
       - install-atom
       - install-java
+      - install-scala
       - install-chrome
       - install-git
       - install-maven
@@ -34,6 +35,8 @@
       - install-shutter
       - install-zoom
       - install-packer
+      - install-scala
+      - install-sbt
       - configure-vim
       - configure-ssh
 

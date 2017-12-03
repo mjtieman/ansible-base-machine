@@ -25,7 +25,6 @@
     roles:
       - install-atom
       - install-java
-      - install-scala
       - install-chrome
       - install-git
       - install-maven
